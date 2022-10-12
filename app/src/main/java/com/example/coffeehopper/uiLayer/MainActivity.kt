@@ -1,7 +1,8 @@
-package com.example.coffeehopper
+package com.example.coffeehopper.uiLayer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.coffeehopper.R
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {

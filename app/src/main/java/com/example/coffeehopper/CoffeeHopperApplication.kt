@@ -18,4 +18,8 @@ class CoffeeHopperApplication: Application() {
     private fun setupServiceLocator() {
 
     }
+
+    private fun setupDependencyInjection() {
+
+    }
 }
