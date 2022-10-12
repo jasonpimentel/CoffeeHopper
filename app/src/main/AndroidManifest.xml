@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CoffeeHopper">
         <activity
-            android:name=".uiLayer.MainActivity"
+            android:name=".uilayer.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

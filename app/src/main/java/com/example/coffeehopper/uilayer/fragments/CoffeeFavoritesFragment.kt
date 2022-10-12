@@ -1,4 +1,4 @@
-package com.example.coffeehopper.uiLayer.fragments
+package com.example.coffeehopper.uilayer.fragments
 
 // use case
 // a user will be able to use this fragment to see all their saved coffee spots

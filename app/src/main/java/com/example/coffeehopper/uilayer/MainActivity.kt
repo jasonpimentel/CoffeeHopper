@@ -1,4 +1,4 @@
-package com.example.coffeehopper.uiLayer
+package com.example.coffeehopper.uilayer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.example.coffeehopper.uiLayer.viewmodels
+package com.example.coffeehopper.uilayer.viewmodels
 
 // use case outline
 // this viewModel will be shared between a map view of the yelp data and a list view.

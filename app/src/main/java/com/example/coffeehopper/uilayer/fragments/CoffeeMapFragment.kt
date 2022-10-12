@@ -1,4 +1,4 @@
-package com.example.coffeehopper.uiLayer.fragments
+package com.example.coffeehopper.uilayer.fragments
 
 import androidx.fragment.app.Fragment
 
