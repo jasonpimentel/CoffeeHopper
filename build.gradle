@@ -8,3 +8,8 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    version_kotlin_coroutines = '1.6.1'
+    version_retrofit = '2.9.0'
+}
