@@ -12,4 +12,5 @@ task clean(type: Delete) {
 ext {
     version_kotlin_coroutines = '1.6.1'
     version_retrofit = '2.9.0'
+    version_moshi ='1.12.0'
 }
