@@ -1,6 +1,10 @@
 package com.example.coffeehopper
 
 import android.app.Application
+import com.example.coffeehopper.presentationlayer.viewmodels.AuthenticationViewModel
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
+import org.koin.dsl.module
 import timber.log.Timber
 
 class CoffeeHopperApplication: Application() {
@@ -9,6 +13,7 @@ class CoffeeHopperApplication: Application() {
         super.onCreate()
         setupTimber()
         setupServiceLocator()
+        setupKoin()
     }
 
     private fun setupTimber() {
@@ -21,5 +26,16 @@ class CoffeeHopperApplication: Application() {
 
     private fun setupDependencyInjection() {
 
+    }
+
+    private fun setupKoin() {
+        val module = module {
+            single { AuthenticationViewModel() }
+        }
+
+        startKoin {
+            androidContext(this@CoffeeHopperApplication)
+            modules(module)
+        }
     }
 }

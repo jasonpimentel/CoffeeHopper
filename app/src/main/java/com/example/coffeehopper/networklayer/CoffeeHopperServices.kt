@@ -14,6 +14,7 @@ object CoffeeHopperServices {
 
     private const val yelpApiBaseUrl ="https://api.yelp.com/v3/"
 
+    // interceptor that will add authentication to header.
     private val yelpClient = OkHttpClient.Builder().addInterceptor(Interceptor {
         it.proceed(it.request().newBuilder().addHeader("Authorization", "Bearer ${BuildConfig.YELP_API_KEY}").build())
     }).build()
