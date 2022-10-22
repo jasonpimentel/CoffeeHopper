@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 }
 
 def localPropertiesFile = rootProject.file("local.properties")
@@ -55,6 +56,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
     implementation 'androidx.navigation:navigation-dynamic-features-fragment:2.5.2'
+
+    // firebase
+    implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
 
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
