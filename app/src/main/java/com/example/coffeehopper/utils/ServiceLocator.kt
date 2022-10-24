@@ -30,7 +30,7 @@ class ServiceLocator {
     }
 
     private fun createDatabase(context: Context): CoffeeHopperDatabase {
-        return Room.databaseBuilder(context, CoffeeHopperDatabase::class.java, "coffeehopper.db")
+        return Room.databaseBuilder(context, CoffeeHopperDatabase::class.java, CoffeeHopperDatabase.name)
             .build()
     }
 
