@@ -1,4 +1,7 @@
 package com.example.coffeehopper.datalayer.repository
 
-class LocalCoffeeDataSource: ICoffeeDataSource {
+import com.example.coffeehopper.datalayer.database.CoffeeHopperDao
+
+class LocalCoffeeDataSource(private val coffeeHopperDao: CoffeeHopperDao) : ICoffeeDataSource {
+
 }

@@ -9,6 +9,8 @@ import com.example.coffeehopper.datalayer.repository.CoffeeRepository
 import com.example.coffeehopper.datalayer.repository.ICoffeeDataSource
 import com.example.coffeehopper.datalayer.repository.LocalCoffeeDataSource
 import com.example.coffeehopper.datalayer.repository.RemoteCoffeeDataSource
+import com.example.coffeehopper.networklayer.CoffeeHopperServices
+import com.example.coffeehopper.networklayer.YelpApi
 
 class ServiceLocator {
     // these are for testing. If these are set then return these.
@@ -18,11 +20,17 @@ class ServiceLocator {
 
     private var remoteCoffeeDataSource: ICoffeeDataSource? = null
 
+    private var yelpApi: YelpApi? = null
+
     fun provideCoffeeRepository(context: Context): CoffeeRepository {
         return CoffeeRepository(
             localDataSource = createLocalDataSource(context),
             remoteDataSource = createRemoteDataSource(context)
         )
+    }
+
+    private fun createYelpApi(): YelpApi {
+        return yelpApi?: CoffeeHopperServices.yelpApi
     }
 
     private fun createDao(context: Context): CoffeeHopperDao {
@@ -35,13 +43,14 @@ class ServiceLocator {
     }
 
     private fun createLocalDataSource(context: Context): ICoffeeDataSource {
-        return LocalCoffeeDataSource()
+        return localCoffeeDataSource?: LocalCoffeeDataSource(createDao(context))
     }
 
     private fun createRemoteDataSource(context: Context): ICoffeeDataSource {
-        return RemoteCoffeeDataSource()
+        return remoteCoffeeDataSource?: RemoteCoffeeDataSource(createYelpApi())
     }
 
+    // functions below are for testing only. we can replace the with fakes to unit test
     @VisibleForTesting
     private fun setLocalCoffeeDataSource(localCoffeeDataSource: ICoffeeDataSource) {
         this.localCoffeeDataSource = localCoffeeDataSource
@@ -57,4 +66,8 @@ class ServiceLocator {
         this.coffeeHopperDao = coffeeHopperDao
     }
 
+    @VisibleForTesting
+    private fun setYelpApi(yelpApi: YelpApi) {
+        this.yelpApi = yelpApi
+    }
 }

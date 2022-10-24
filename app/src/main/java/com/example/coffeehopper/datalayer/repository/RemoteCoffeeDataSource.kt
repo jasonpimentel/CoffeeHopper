@@ -1,5 +1,7 @@
 package com.example.coffeehopper.datalayer.repository
 
-class RemoteCoffeeDataSource: ICoffeeDataSource {
+import com.example.coffeehopper.networklayer.YelpApi
+
+class RemoteCoffeeDataSource(private val yelpApi: YelpApi): ICoffeeDataSource {
 
 }
