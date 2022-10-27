@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeehopper.R
 import com.example.coffeehopper.databinding.CoffeeItemViewBinding
+import com.example.coffeehopper.datalayer.database.CoffeeHop
 import com.example.coffeehopper.networklayer.YelpBusiness
 
 class CoffeeListViewHolder(private val binding: CoffeeItemViewBinding): RecyclerView.ViewHolder(binding.root) {
 
-    fun bindView(yelp: YelpBusiness) {
+    fun bindView(yelp: CoffeeHop) {
         binding.yelpBusiness = yelp
         binding.executePendingBindings()
     }

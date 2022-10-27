@@ -4,12 +4,12 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = CoffeeHop.tableName)
+@Entity(tableName = "coffee_hops")
 data class CoffeeHop(
     @ColumnInfo(name = "latitude") val latitude: Double?,
     @ColumnInfo(name = "longitude") val longitude: Double?,
     @ColumnInfo(name = "display_phone") val displayPhone: String?,
-    @PrimaryKey val id: String?,
+    @PrimaryKey() val id: String,
     @ColumnInfo(name = "image_url") val imageUrl: String?,
     @ColumnInfo(name = "address1") val address1: String?,
     @ColumnInfo(name = "address2") val address2: String?,

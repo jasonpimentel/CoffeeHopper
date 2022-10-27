@@ -7,5 +7,6 @@
     <fragment
         android:id="@+id/coffeeListFragment"
         android:name="com.example.coffeehopper.presentationlayer.fragments.CoffeeListFragment"
-        android:label="CoffeeListFragment" />
+        android:label="CoffeeListFragment"
+        tools:layout="@layout/fragment_coffee_list"/>
 </navigation>

@@ -8,6 +8,7 @@ import com.example.coffeehopper.networklayer.YelpResponse
 import com.example.coffeehopper.networklayer.asDbModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 
 class CoffeeHopperRepository(
@@ -22,9 +23,11 @@ class CoffeeHopperRepository(
     // when the data gets loaded from the internet it will also update the cache
     suspend fun loadCoffeeHops(term: String, latitude: Double, longitude: Double, radius: Int) {
         withContext(Dispatchers.IO) {
-            val yelpBusinesses: YelpResponse =
+            val yelpResponse: YelpResponse =
                 remoteDataSource.searchForBusinesses(term, latitude, longitude, radius)
-            localDataSource.addCoffeeHops(yelpBusinesses.businesses.asDbModel())
+            localDataSource.addCoffeeHops(yelpResponse.businesses.asDbModel())
+            Timber.d("found ${yelpResponse.total} businesses")
+
         }
     }
 

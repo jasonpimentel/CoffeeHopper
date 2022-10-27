@@ -36,18 +36,18 @@ object ServiceLocator {
         return coffeeHopperDao ?: createDatabase(context).coffeeHopperDao().also {
             synchronized(this) {
                 coffeeHopperDao = it
-
             }
         }
     }
 
     private fun createDatabase(context: Context): CoffeeHopperDatabase {
-        return Room.databaseBuilder(
+        val result = Room.databaseBuilder(
             context,
             CoffeeHopperDatabase::class.java,
-            CoffeeHopperDatabase.name
-        )
-            .build()
+            "coffeehop.db"
+        ).build()
+
+        return result;
     }
 
     // functions below are for testing only. we can replace the with fakes to unit test

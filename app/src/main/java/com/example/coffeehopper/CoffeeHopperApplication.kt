@@ -3,7 +3,9 @@ package com.example.coffeehopper
 import android.app.Application
 import com.example.coffeehopper.datalayer.repository.CoffeeHopperRepository
 import com.example.coffeehopper.presentationlayer.viewmodels.AuthenticationViewModel
+import com.example.coffeehopper.presentationlayer.viewmodels.CoffeeListMapViewModel
 import com.example.coffeehopper.utils.ServiceLocator
+import org.koin.android.ext.android.get
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
@@ -11,8 +13,8 @@ import timber.log.Timber
 
 class CoffeeHopperApplication : Application() {
 
-    private var coffeeHopperRepository: CoffeeHopperRepository =
-        ServiceLocator.provideCoffeeRepository(this.applicationContext)
+    private val coffeeHopperRepository: CoffeeHopperRepository
+    get() = ServiceLocator.provideCoffeeRepository(this)
 
     override fun onCreate() {
         super.onCreate()
@@ -28,6 +30,8 @@ class CoffeeHopperApplication : Application() {
         val module = module {
             single { AuthenticationViewModel() }
             single { coffeeHopperRepository }
+
+            single { CoffeeListMapViewModel(get()) }
         }
 
         startKoin {

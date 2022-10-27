@@ -29,7 +29,7 @@ data class YelpBusiness(
 fun List<YelpBusiness>.asDbModel(): List<CoffeeHop>{
     return map {
         CoffeeHop(
-            id = it.id,
+            id = it.id!!,
             latitude = it.coordinates?.latitude,
             longitude = it.coordinates?.longitude,
             displayPhone = it.displayPhone,
@@ -53,7 +53,7 @@ fun List<YelpBusiness>.asDbModel(): List<CoffeeHop>{
 
 fun YelpBusiness.asDbModel(): CoffeeHop {
     return CoffeeHop(
-        id = id,
+        id = id!!,
         latitude = coordinates?.latitude,
         longitude = coordinates?.longitude,
         displayPhone = displayPhone,
