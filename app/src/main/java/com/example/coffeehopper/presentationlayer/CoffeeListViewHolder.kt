@@ -11,8 +11,9 @@ import com.example.coffeehopper.networklayer.YelpBusiness
 
 class CoffeeListViewHolder(private val binding: CoffeeItemViewBinding): RecyclerView.ViewHolder(binding.root) {
 
-    fun bindView(yelp: CoffeeHop) {
-        binding.yelpBusiness = yelp
+    fun bindView(yelp: CoffeeHop, coffeeHopListener: CoffeeHopListener) {
+        binding.coffeeHop = yelp
+        binding.clickListener = coffeeHopListener
         binding.executePendingBindings()
     }
 

@@ -9,14 +9,14 @@ import com.example.coffeehopper.R
 import com.example.coffeehopper.datalayer.database.CoffeeHop
 import com.example.coffeehopper.networklayer.YelpBusiness
 
-class CoffeeListAdapter(): ListAdapter<CoffeeHop, CoffeeListViewHolder>(CoffeeListDiffUtil()) {
+class CoffeeListAdapter(private val clickListener: CoffeeHopListener): ListAdapter<CoffeeHop, CoffeeListViewHolder>(CoffeeListDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoffeeListViewHolder {
        return CoffeeListViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: CoffeeListViewHolder, position: Int) {
        val item: CoffeeHop = getItem(position)
-        holder.bindView(item)
+        holder.bindView(item, clickListener)
     }
 }
 
@@ -29,5 +29,8 @@ class CoffeeListDiffUtil: DiffUtil.ItemCallback<CoffeeHop>() {
         return oldItem == newItem
     }
 
+}
 
+class CoffeeHopListener(val coffeeClickListener: (coffeeHop: CoffeeHop) -> Unit) {
+    fun coffeeHopClick(coffeeHop: CoffeeHop) = coffeeClickListener(coffeeHop)
 }

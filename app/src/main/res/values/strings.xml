@@ -2,4 +2,7 @@
     <string name="app_name">CoffeeHopper</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_nav_label">Home</string>
+    <string name="search_nav_label">Search</string>
+    <string name="favorites_nav_label">Favorites</string>
 </resources>

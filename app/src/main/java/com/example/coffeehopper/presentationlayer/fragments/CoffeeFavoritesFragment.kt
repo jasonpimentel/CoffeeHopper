@@ -25,11 +25,16 @@ class CoffeeFavoritesFragment: Fragment() {
     ): View? {
         binding = FragmentCoffeeFavoritesBinding.inflate(inflater, container, false)
 
+
+
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel.coffeeHopperFavorites.observe(viewLifecycleOwner) {
 
         }
-
-        return super.onCreateView(inflater, container, savedInstanceState)
     }
 
 

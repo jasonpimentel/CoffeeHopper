@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/coffeeListFragment"
+        android:icon="@drawable/ic_outline_home_24"
+        android:title="@string/home_nav_label" />
+    <item
+        android:id="@+id/coffeeMapFragment"
+        android:icon="@drawable/ic_outline_search_24"
+        android:title="@string/search_nav_label" />
+    <item
+        android:id="@+id/coffeeFavoritesFragment"
+        android:icon="@drawable/ic_outline_favorite_border_24"
+        android:title="@string/favorites_nav_label" />
+</menu>

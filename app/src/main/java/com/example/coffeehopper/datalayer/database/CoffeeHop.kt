@@ -1,9 +1,12 @@
 package com.example.coffeehopper.datalayer.database
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = "coffee_hops")
 data class CoffeeHop(
     @ColumnInfo(name = "latitude") val latitude: Double?,
@@ -25,7 +28,7 @@ data class CoffeeHop(
     @ColumnInfo(name = "review_count") val reviewCount: Int?,
     @ColumnInfo(name = "url") val url: String?,
     @ColumnInfo(name = "favorite") val favorite: Boolean? = false
-) {
+) : Parcelable {
     companion object {
         const val tableName = "coffee_hops"
     }

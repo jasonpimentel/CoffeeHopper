@@ -5,14 +5,18 @@
 
     <data>
         <variable
-            name="yelpBusiness"
+            name="clickListener"
+            type="com.example.coffeehopper.presentationlayer.CoffeeHopListener" />
+        <variable
+            name="coffeeHop"
             type="com.example.coffeehopper.datalayer.database.CoffeeHop" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:onClick="@{() -> clickListener.coffeeHopClick(coffeeHop)}">
         <ImageView
             android:id="@+id/coffee_Hop_ImageView"
             android:layout_width="100dp"
@@ -23,13 +27,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:1"
             tools:layout_width="100dp"
-            app:coffeeHopImgUrl="@{yelpBusiness.imageUrl}"
-            android:contentDescription="yelp picture"/>
+            app:coffeeHopImgUrl="@{coffeeHop.imageUrl}"
+            android:contentDescription="yelp picture"
+            android:onClick="@{() -> clickListener.coffeeHopClick(coffeeHop)}"/>
         <TextView
             android:id="@+id/business_name_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{yelpBusiness.name}"
+            android:text="@{coffeeHop.name}"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginStart="8dp"
@@ -44,21 +49,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:textSize="16dp"
+            android:textSize="16sp"
             app:layout_constraintLeft_toRightOf="@+id/coffee_Hop_ImageView"
             app:layout_constraintTop_toBottomOf="@id/business_name_text"
             app:layout_constraintBottom_toTopOf="@id/phone_label_text"
             tools:text="1234 poo st. \n seattle, wa 92345"
-            app:address1 = "@{yelpBusiness.address1}"
-            app:city="@{yelpBusiness.city}"
-            app:state="@{yelpBusiness.state}"
-            app:zip="@{yelpBusiness.zip}"/>
+            app:address1 = "@{coffeeHop.address1}"
+            app:city="@{coffeeHop.city}"
+            app:state="@{coffeeHop.state}"
+            app:zip="@{coffeeHop.zip}"/>
         <TextView
             android:id="@+id/phone_label_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:textSize="16dp"
+            android:textSize="16sp"
             app:layout_constraintLeft_toRightOf="@+id/coffee_Hop_ImageView"
             app:layout_constraintTop_toBottomOf="@id/address_text"
             app:layout_constraintBottom_toBottomOf="@id/coffee_Hop_ImageView"
@@ -69,9 +74,7 @@
             app:layout_constraintTop_toTopOf="@id/phone_label_text"
             app:layout_constraintBottom_toBottomOf="@id/phone_label_text"
             app:layout_constraintLeft_toRightOf="@id/phone_label_text"
-            android:text="@{yelpBusiness.displayPhone}"
+            android:text="@{coffeeHop.displayPhone}"
             tools:text="123-456-7890"/>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

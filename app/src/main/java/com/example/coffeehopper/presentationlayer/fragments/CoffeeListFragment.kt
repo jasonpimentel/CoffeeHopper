@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coffeehopper.databinding.FragmentCoffeeListBinding
+import com.example.coffeehopper.presentationlayer.CoffeeHopListener
 import com.example.coffeehopper.presentationlayer.CoffeeListAdapter
 import com.example.coffeehopper.presentationlayer.viewmodels.CoffeeListMapViewModel
 import com.example.coffeehopper.utils.ServiceLocator
@@ -27,16 +29,22 @@ class CoffeeListFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCoffeeListBinding.inflate(inflater, container, false)
-        binding.coffeeListRecycler.adapter = CoffeeListAdapter()
+        binding.coffeeListRecycler.adapter = CoffeeListAdapter(CoffeeHopListener { coffeeHop ->
+           val navController = findNavController()
+            navController.navigate(CoffeeListFragmentDirections.actionCoffeeListFragmentToCoffeeDetailsFragment(coffeeHop))
+        })
         binding.coffeeListRecycler.layoutManager = LinearLayoutManager(requireContext())
+
+        viewModel.loadCoffeeHops(latitude = 47.37778345227484, longitude = -122.2976992311103)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         viewModel.coffeeHops.observe(viewLifecycleOwner) {
             (binding.coffeeListRecycler.adapter as CoffeeListAdapter).submitList(it)
         }
-
-        viewModel.loadCoffeeHops(latitude = 47.37778345227484, longitude = -122.2976992311103)
-
-
-        return binding.root
     }
 }
