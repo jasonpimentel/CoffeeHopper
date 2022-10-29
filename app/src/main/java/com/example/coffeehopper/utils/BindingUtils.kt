@@ -1,5 +1,6 @@
 package com.example.coffeehopper.utils
 
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
@@ -27,4 +28,19 @@ fun bindImage(view: ImageView, coffeeHopImgUrl: String?) {
 fun bindAddress(view: TextView, address1: String?, city: String?, state: String?, zip: String?) {
     val formattedAddress = "$address1 \n $city, $state $zip"
     view.text = formattedAddress
+}
+
+@BindingAdapter("favoriteVisibility")
+fun bindFavoriteVisibility(view: ImageView, favoriteVisibility: Boolean){
+    if(!favoriteVisibility) {
+        view.visibility = View.INVISIBLE
+    }
+    else{
+        view.visibility = View.VISIBLE
+    }
+}
+
+@BindingAdapter("rating")
+fun bindRating(view: TextView, rating: Float) {
+    view.text = "Rating: $rating/5"
 }

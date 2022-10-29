@@ -24,9 +24,6 @@ class CoffeeFavoritesFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCoffeeFavoritesBinding.inflate(inflater, container, false)
-
-
-
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 

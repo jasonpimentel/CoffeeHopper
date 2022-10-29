@@ -1,5 +1,6 @@
 package com.example.coffeehopper.presentationlayer.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coffeehopper.databinding.FragmentCoffeeListBinding
 import com.example.coffeehopper.presentationlayer.CoffeeHopListener
 import com.example.coffeehopper.presentationlayer.CoffeeListAdapter
+import com.example.coffeehopper.presentationlayer.activities.CoffeeDetailsActivity
 import com.example.coffeehopper.presentationlayer.viewmodels.CoffeeListMapViewModel
 import com.example.coffeehopper.utils.ServiceLocator
 import org.koin.android.ext.android.inject
@@ -30,8 +32,9 @@ class CoffeeListFragment: Fragment() {
     ): View {
         binding = FragmentCoffeeListBinding.inflate(inflater, container, false)
         binding.coffeeListRecycler.adapter = CoffeeListAdapter(CoffeeHopListener { coffeeHop ->
-           val navController = findNavController()
-            navController.navigate(CoffeeListFragmentDirections.actionCoffeeListFragmentToCoffeeDetailsFragment(coffeeHop))
+           val intent = Intent(requireContext(), CoffeeDetailsActivity::class.java)
+            intent.putExtra("coffeeHop", coffeeHop)
+            startActivity(intent)
         })
         binding.coffeeListRecycler.layoutManager = LinearLayoutManager(requireContext())
 

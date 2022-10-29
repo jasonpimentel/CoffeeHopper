@@ -16,15 +16,18 @@
     <fragment
         android:id="@+id/coffeeMapFragment"
         android:name="com.example.coffeehopper.presentationlayer.fragments.CoffeeMapFragment"
-        android:label="CoffeeMapFragment" />
+        android:label="CoffeeMapFragment"
+        tools:layout="@layout/fragment_coffee_map"/>
     <fragment
         android:id="@+id/coffeeFavoritesFragment"
         android:name="com.example.coffeehopper.presentationlayer.fragments.CoffeeFavoritesFragment"
-        android:label="CoffeeFavoritesFragment" />
+        android:label="CoffeeFavoritesFragment"
+        tools:layout="@layout/fragment_coffee_favorites"/>
     <fragment
         android:id="@+id/coffeeDetailsFragment"
         android:name="com.example.coffeehopper.presentationlayer.fragments.CoffeeDetailsFragment"
-        android:label="CoffeeDetailsFragment" >
+        android:label="CoffeeDetailsFragment"
+        tools:layout="@layout/activity_coffee_details">
         <argument
             android:name="coffeeHop"
             app:argType="com.example.coffeehopper.datalayer.database.CoffeeHop" />

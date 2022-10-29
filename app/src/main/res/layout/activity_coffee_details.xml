@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="coffeeHop"
+            type="com.example.coffeehopper.datalayer.database.CoffeeHop" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@layout/activity_coffee_details">
+        <ImageView
+            android:id="@+id/yelp_image_view"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:contentDescription="@string/image_content_desc"
+            android:scaleType="centerCrop"
+            app:coffeeHopImgUrl="@{coffeeHop.imageUrl}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/cardview_dark_background" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/ic_baseline_favorite_24"
+            app:favoriteVisibility="@{coffeeHop.favorite}"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/business_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@{coffeeHop.name}"
+            app:layout_constraintBottom_toBottomOf="@id/yelp_image_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:text="Business Title" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/yelp_image_view"
+            app:layout_constraintRight_toRightOf="parent"
+            app:rating="@{coffeeHop.rating}"
+            tools:text="Rating: 4/5" />
+
+        <TextView
+            android:id="@+id/price_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="price"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/website_text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/yelp_image_view" />
+
+        <TextView
+            android:id="@+id/website_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{coffeeHop.price}"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/website_divider"
+            app:layout_constraintLeft_toLeftOf="@id/price_label"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/price_label"
+            tools:text="$$$$" />
+
+        <View
+            android:id="@+id/website_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintLeft_toLeftOf="@id/price_label"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/website_text" />
+
+        <TextView
+            android:id="@+id/phone_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/price_label"
+            app:layout_constraintTop_toBottomOf="@id/website_divider" />
+
+        <TextView
+            android:id="@+id/phoneNumber_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{coffeeHop.displayPhone}"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="@id/price_label"
+            app:layout_constraintTop_toBottomOf="@id/phone_label"
+            tools:text="123-456-7890" />
+
+        <View
+            android:id="@+id/phone_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintLeft_toLeftOf="@id/price_label"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/phoneNumber_Text" />
+
+        <TextView
+            android:id="@+id/address_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/price_label"
+            app:layout_constraintTop_toBottomOf="@id/phone_divider" />
+
+        <TextView
+            android:id="@+id/address_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="@id/price_label"
+            app:layout_constraintTop_toBottomOf="@id/address_label"
+            tools:text="1234 poop \nseattle, WA 12345"
+            app:address1="@{coffeeHop.address1}"
+            app:city = "@{coffeeHop.city}"
+            app:state="@{coffeeHop.state}"
+            app:zip="@{coffeeHop.zip}"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
