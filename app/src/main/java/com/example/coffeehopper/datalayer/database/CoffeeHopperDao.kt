@@ -2,6 +2,7 @@ package com.example.coffeehopper.datalayer.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.google.android.gms.maps.model.LatLng
 
 @Dao
 interface CoffeeHopperDao {
@@ -14,6 +15,10 @@ interface CoffeeHopperDao {
 
     @Query("select * from ${CoffeeHop.tableName} where favorite is 1")
     fun getCoffeeHopFavorites() : LiveData<List<CoffeeHop>>
+
+    //AND longitude >= :targetSouthWestLng AND longitude <= :targetNorthEastLng
+    @Query("select * from ${CoffeeHop.tableName} where (latitude >= :lowerLatitude AND latitude <= :upperLatitude) AND (longitude >= :lowerLongitude AND longitude <= :upperLongitude)")
+    fun getCoffeeHopsWithInBounds(lowerLatitude: Double, upperLatitude: Double, lowerLongitude: Double, upperLongitude: Double): List<CoffeeHop>
 
     // if we pull up the same key from yelp then its okay to just replace it as it may be new data.
     @Insert(onConflict = OnConflictStrategy.REPLACE)

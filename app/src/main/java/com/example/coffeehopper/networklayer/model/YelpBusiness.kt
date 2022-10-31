@@ -1,10 +1,13 @@
-package com.example.coffeehopper.networklayer
+package com.example.coffeehopper.networklayer.model
 
 import com.example.coffeehopper.datalayer.database.CoffeeHop
 import com.squareup.moshi.Json
+import java.util.Locale.Category
 
 data class YelpBusiness(
     // place holder for coordinate object
+    @Json(name ="categories")
+    val categories: List<YelpCategory>?,
     val coordinates: YelpCoordinates?,
     @Json(name = "display_phone")
     val displayPhone: String?,

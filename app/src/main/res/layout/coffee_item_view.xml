@@ -15,18 +15,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
+        android:padding="8dp"
         android:onClick="@{() -> clickListener.coffeeHopClick(coffeeHop)}">
         <ImageView
             android:id="@+id/coffee_Hop_ImageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="0dp"
+            android:layout_height="140dp"
             android:scaleType="centerCrop"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:1"
-            tools:layout_width="100dp"
             app:coffeeHopImgUrl="@{coffeeHop.imageUrl}"
             android:contentDescription="yelp picture"
             android:onClick="@{() -> clickListener.coffeeHopClick(coffeeHop)}"/>

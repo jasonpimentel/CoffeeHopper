@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/coffeeListFragment">
+    app:startDestination="@id/coffeeMapFragment">
     <fragment
         android:id="@+id/coffeeListFragment"
         android:name="com.example.coffeehopper.presentationlayer.fragments.CoffeeListFragment"

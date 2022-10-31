@@ -1,4 +1,4 @@
-package com.example.coffeehopper.networklayer
+package com.example.coffeehopper.networklayer.model
 
 data class YelpResponse(
     val total: Int,

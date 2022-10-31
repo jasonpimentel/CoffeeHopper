@@ -6,20 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coffeehopper.databinding.FragmentCoffeeListBinding
 import com.example.coffeehopper.presentationlayer.CoffeeHopListener
 import com.example.coffeehopper.presentationlayer.CoffeeListAdapter
 import com.example.coffeehopper.presentationlayer.activities.CoffeeDetailsActivity
 import com.example.coffeehopper.presentationlayer.viewmodels.CoffeeListMapViewModel
-import com.example.coffeehopper.utils.ServiceLocator
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 // use case
 // user will be able to see a list of coffee shops near by from the yelp api
-class CoffeeListFragment: Fragment() {
+class CoffeeListFragment : Fragment() {
 
     private lateinit var binding: FragmentCoffeeListBinding
 
@@ -32,13 +31,14 @@ class CoffeeListFragment: Fragment() {
     ): View {
         binding = FragmentCoffeeListBinding.inflate(inflater, container, false)
         binding.coffeeListRecycler.adapter = CoffeeListAdapter(CoffeeHopListener { coffeeHop ->
-           val intent = Intent(requireContext(), CoffeeDetailsActivity::class.java)
+            val intent = Intent(requireContext(), CoffeeDetailsActivity::class.java)
             intent.putExtra("coffeeHop", coffeeHop)
             startActivity(intent)
         })
+
         binding.coffeeListRecycler.layoutManager = LinearLayoutManager(requireContext())
 
-        viewModel.loadCoffeeHops(latitude = 47.37778345227484, longitude = -122.2976992311103)
+        // viewModel.loadCoffeeHops(latitude = 47.37778345227484, longitude = -122.2976992311103)
 
         return binding.root
     }
@@ -47,7 +47,9 @@ class CoffeeListFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.coffeeHops.observe(viewLifecycleOwner) {
-            (binding.coffeeListRecycler.adapter as CoffeeListAdapter).submitList(it)
+            lifecycleScope.launch {
+                (binding.coffeeListRecycler.adapter as CoffeeListAdapter).submitList(it)
+            }
         }
     }
 }

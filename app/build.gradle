@@ -5,6 +5,7 @@ plugins {
     id 'kotlin-kapt'
     id 'com.google.gms.google-services'
     id 'kotlin-parcelize'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 def localPropertiesFile = rootProject.file("local.properties")
@@ -20,7 +21,7 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0"
-
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "YELP_API_KEY", localProperties['yelpApiKey']
     }
@@ -57,11 +58,6 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_kotlin_coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_kotlin_coroutines"
 
-    // navigation
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
-    implementation 'androidx.navigation:navigation-dynamic-features-fragment:2.5.2'
-
     // lifecycle
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
@@ -71,12 +67,28 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
     implementation 'com.firebaseui:firebase-ui-auth:8.0.2'
 
+    // fragment
+    implementation "androidx.fragment:fragment:1.6.0-alpha03"
+    implementation "androidx.fragment:fragment-ktx:1.6.0-alpha03"
     //glide
     implementation "com.github.bumptech.glide:glide:$version_glide"
 
     // koin
     implementation "io.insert-koin:koin-core:$koin_version"
     implementation "io.insert-koin:koin-android:$koin_version"
+
+    // navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-runtime-ktx:$nav_version"
+
+    // map
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.maps.android:maps-ktx:3.2.1'
+    implementation "com.google.android.gms:play-services-location:21.0.0"
+    implementation "com.google.maps.android:android-maps-utils:0.4"
+    //implementation 'com.google.android.libraries.maps:maps:3.1.0-beta'
 
     // moshi
     implementation "com.squareup.moshi:moshi:$version_moshi"

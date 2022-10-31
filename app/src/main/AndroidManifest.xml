@@ -9,11 +9,14 @@
     <application
         android:name=".CoffeeHopperApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_outline_coffee_24"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CoffeeHopper">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}"/>
         <activity
             android:name="com.example.coffeehopper.presentationlayer.CoffeeHopperActivity"
             android:exported="true">

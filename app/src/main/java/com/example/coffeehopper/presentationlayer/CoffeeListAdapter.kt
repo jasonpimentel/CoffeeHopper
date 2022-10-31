@@ -1,13 +1,9 @@
 package com.example.coffeehopper.presentationlayer
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
-import com.example.coffeehopper.R
 import com.example.coffeehopper.datalayer.database.CoffeeHop
-import com.example.coffeehopper.networklayer.YelpBusiness
 
 class CoffeeListAdapter(private val clickListener: CoffeeHopListener): ListAdapter<CoffeeHop, CoffeeListViewHolder>(CoffeeListDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoffeeListViewHolder {

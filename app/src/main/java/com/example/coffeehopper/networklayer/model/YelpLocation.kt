@@ -1,4 +1,4 @@
-package com.example.coffeehopper.networklayer
+package com.example.coffeehopper.networklayer.model
 
 import com.squareup.moshi.Json
 

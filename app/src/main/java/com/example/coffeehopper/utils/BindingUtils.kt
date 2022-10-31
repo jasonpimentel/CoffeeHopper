@@ -13,7 +13,6 @@ import timber.log.Timber
 @BindingAdapter("coffeeHopImgUrl")
 fun bindImage(view: ImageView, coffeeHopImgUrl: String?) {
     if(!coffeeHopImgUrl.isNullOrEmpty()) {
-        Timber.d("coffeeHop image url: $coffeeHopImgUrl")
         val imgUri = coffeeHopImgUrl.toUri().buildUpon().scheme("https").build()
         Glide.with(view.context).load(imgUri).apply(
             RequestOptions()
