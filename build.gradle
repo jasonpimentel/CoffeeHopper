@@ -31,4 +31,5 @@ ext {
     room_version = '2.4.3'
     version_glide ='4.14.2'
     nav_version = '2.5.3'
+    version_work ='2.7.1'
 }

@@ -8,4 +8,7 @@
     <string name="image_content_desc">coffee business image</string>
     <string name="info_label">Info</string>
     <string name="website_label">website</string>
+    <string name="permission_denied_explanation">You need to grant location permission in order to select the location.</string>
+    <string name="settings">Settings</string>
+
 </resources>
