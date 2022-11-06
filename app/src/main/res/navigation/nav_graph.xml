@@ -9,9 +9,6 @@
         android:name="com.example.coffeehopper.presentationlayer.fragments.CoffeeListFragment"
         android:label="CoffeeListFragment"
         tools:layout="@layout/fragment_coffee_list">
-        <action
-            android:id="@+id/action_coffeeListFragment_to_coffeeDetailsFragment"
-            app:destination="@id/coffeeDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/coffeeMapFragment"
@@ -23,13 +20,5 @@
         android:name="com.example.coffeehopper.presentationlayer.fragments.CoffeeFavoritesFragment"
         android:label="CoffeeFavoritesFragment"
         tools:layout="@layout/fragment_coffee_favorites"/>
-    <fragment
-        android:id="@+id/coffeeDetailsFragment"
-        android:name="com.example.coffeehopper.presentationlayer.fragments.CoffeeDetailsFragment"
-        android:label="CoffeeDetailsFragment"
-        tools:layout="@layout/activity_coffee_details">
-        <argument
-            android:name="coffeeHop"
-            app:argType="com.example.coffeehopper.datalayer.database.CoffeeHop" />
-    </fragment>
+
 </navigation>

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coffeehopper.databinding.FragmentCoffeeListBinding
+import com.example.coffeehopper.datalayer.database.CoffeeHop
 import com.example.coffeehopper.presentationlayer.CoffeeHopListener
 import com.example.coffeehopper.presentationlayer.CoffeeListAdapter
 import com.example.coffeehopper.presentationlayer.activities.CoffeeDetailsActivity
@@ -32,13 +33,11 @@ class CoffeeListFragment : Fragment() {
         binding = FragmentCoffeeListBinding.inflate(inflater, container, false)
         binding.coffeeListRecycler.adapter = CoffeeListAdapter(CoffeeHopListener { coffeeHop ->
             val intent = Intent(requireContext(), CoffeeDetailsActivity::class.java)
-            intent.putExtra("coffeeHop", coffeeHop)
+            intent.putExtra(CoffeeHop.extraName, coffeeHop)
             startActivity(intent)
         })
 
         binding.coffeeListRecycler.layoutManager = LinearLayoutManager(requireContext())
-
-        // viewModel.loadCoffeeHops(latitude = 47.37778345227484, longitude = -122.2976992311103)
 
         return binding.root
     }
@@ -52,4 +51,5 @@ class CoffeeListFragment : Fragment() {
             }
         }
     }
+
 }

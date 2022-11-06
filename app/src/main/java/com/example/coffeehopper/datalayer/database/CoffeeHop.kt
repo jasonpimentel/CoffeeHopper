@@ -31,5 +31,6 @@ data class CoffeeHop(
 ) : Parcelable {
     companion object {
         const val tableName = "coffee_hops"
+        const val extraName = "coffeeHopExtra"
     }
 }

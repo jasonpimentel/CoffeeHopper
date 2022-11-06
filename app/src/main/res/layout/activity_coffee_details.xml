@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.example.coffeehopper.presentationlayer.viewmodels.CoffeeDetailsViewModel" />
         <variable
             name="coffeeHop"
             type="com.example.coffeehopper.datalayer.database.CoffeeHop" />
@@ -26,15 +28,18 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:background="@color/cardview_dark_background" />
 
-        <ImageView
+        <ToggleButton
+            android:id="@+id/favorite_toggle"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="16dp"
-            android:src="@drawable/ic_baseline_favorite_24"
-            app:favoriteVisibility="@{coffeeHop.favorite}"
+            android:checked="@{viewModel.favorited}"
+            android:src="@drawable/ic_slide_switch_on"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/toggleButton"
+            android:background="@drawable/ic_toggle_bg"/>
 
         <TextView
             android:id="@+id/business_title_text"

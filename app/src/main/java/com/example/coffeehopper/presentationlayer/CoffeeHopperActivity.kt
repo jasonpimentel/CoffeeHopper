@@ -7,16 +7,23 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.work.Constraints
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.NetworkType
+import androidx.work.WorkManager
 import com.example.coffeehopper.R
 import com.example.coffeehopper.databinding.ActivityCoffeeHopperBinding
 import com.example.coffeehopper.presentationlayer.viewmodels.AuthenticationViewModel
+import com.example.coffeehopper.utils.CoffeeHopperDbWorker
 import com.firebase.ui.auth.AuthUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CoffeeHopperActivity : AppCompatActivity() {
@@ -24,6 +31,8 @@ class CoffeeHopperActivity : AppCompatActivity() {
     private val viewModel by viewModel<AuthenticationViewModel>()
     private lateinit var loginLauncher: ActivityResultLauncher<Intent>
     private lateinit var binding:ActivityCoffeeHopperBinding
+    private var applicationScope = CoroutineScope(Dispatchers.Default)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCoffeeHopperBinding.inflate(layoutInflater)
@@ -38,6 +47,20 @@ class CoffeeHopperActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+        applicationScope.launch {
+            val workManager = WorkManager.getInstance(this@CoffeeHopperActivity)
+            val constraints = Constraints.Builder()
+                .setRequiredNetworkType(NetworkType.UNMETERED)
+                .setRequiresBatteryNotLow(true)
+                .setRequiresCharging(true)
+                .build()
+
+            workManager.enqueueUniquePeriodicWork(
+                CoffeeHopperDbWorker.dbWorkerName,
+                ExistingPeriodicWorkPolicy.KEEP,
+                CoffeeHopperDbWorker.buildWorkRequest(constraints)
+            )
+        }
         observeAuthenticationState()
 
         loginLauncher = getLauncher()

@@ -88,7 +88,6 @@ class CoffeeMapFragment : Fragment(), OnMapReadyCallback {
                 map.clear()
             }
         }
-
         return binding.root
     }
 

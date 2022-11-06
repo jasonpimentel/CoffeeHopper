@@ -3,6 +3,7 @@ package com.example.coffeehopper
 import android.app.Application
 import com.example.coffeehopper.datalayer.repository.CoffeeHopperRepository
 import com.example.coffeehopper.presentationlayer.viewmodels.AuthenticationViewModel
+import com.example.coffeehopper.presentationlayer.viewmodels.CoffeeDetailsViewModel
 import com.example.coffeehopper.presentationlayer.viewmodels.CoffeeFavoritesViewModel
 import com.example.coffeehopper.presentationlayer.viewmodels.CoffeeListMapViewModel
 import com.example.coffeehopper.utils.ServiceLocator
@@ -32,6 +33,10 @@ class CoffeeHopperApplication : Application() {
         val module = module {
             viewModel {
                 CoffeeFavoritesViewModel(get())
+            }
+
+            viewModel {
+                CoffeeDetailsViewModel(get())
             }
             single { AuthenticationViewModel() }
             single { coffeeHopperRepository }
