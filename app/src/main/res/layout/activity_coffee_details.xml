@@ -12,16 +12,17 @@
             type="com.example.coffeehopper.datalayer.database.CoffeeHop" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/activity_coffee_details">
+        tools:layout="@layout/activity_coffee_details"
+        tools:showPaths="true"
+        app:layoutDescription="@xml/details_scene">
         <ImageView
             android:id="@+id/yelp_image_view"
             android:layout_width="0dp"
             android:layout_height="250dp"
             android:contentDescription="@string/image_content_desc"
-            android:scaleType="centerCrop"
             app:coffeeHopImgUrl="@{coffeeHop.imageUrl}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -56,6 +57,7 @@
             tools:text="Business Title" />
 
         <TextView
+            android:id="@+id/rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
@@ -74,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="price"
+            android:text="@string/price_label"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/website_text"
@@ -109,7 +111,7 @@
             android:id="@+id/phone_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Phone"
+            android:text="@string/phone_label"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="@id/price_label"
@@ -141,7 +143,7 @@
             android:id="@+id/address_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Address"
+            android:text="@string/address_label"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="@id/price_label"
@@ -160,5 +162,5 @@
             app:city = "@{coffeeHop.city}"
             app:state="@{coffeeHop.state}"
             app:zip="@{coffeeHop.zip}"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>
