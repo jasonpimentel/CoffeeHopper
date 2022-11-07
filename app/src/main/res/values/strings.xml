@@ -19,4 +19,5 @@
     <string name="price_label">price</string>
     <string name="phone_label">Phone</string>
     <string name="address_label">Address</string>
+    <string name="phone_list_label">Phone:</string>
 </resources>
