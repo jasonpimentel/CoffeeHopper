@@ -5,9 +5,8 @@
     <Transition
         motion:constraintSetStart="@+id/start"
         motion:constraintSetEnd="@+id/end"
-        motion:duration="1000"
+        motion:duration="10000"
         motion:autoTransition="animateToEnd">
-
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
@@ -15,7 +14,9 @@
             android:id="@+id/yelp_image_view"
             android:layout_width="0dp"
             android:layout_height="250dp"
-            motion:layout_constraintEnd_toStartOf="parent"
+            android:alpha="0"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintTop_toTopOf="parent" />
     </ConstraintSet>
 
@@ -24,6 +25,7 @@
             android:id="@+id/yelp_image_view"
             android:layout_width="0dp"
             android:layout_height="250dp"
+            android:alpha="100"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintTop_toTopOf="parent" />
